@@ -21,5 +21,6 @@ public class Game {
 	private String name;
 	private String editor;
 	private LocalDate released;
+	private String alias;
 }
 

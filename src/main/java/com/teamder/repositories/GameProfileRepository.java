@@ -6,4 +6,5 @@ import com.teamder.models.GameProfile;
 
 public interface GameProfileRepository extends JpaRepository<GameProfile, Long> {
 
+	public GameProfile findByGamerId(String id);
 }
