@@ -7,14 +7,21 @@ import com.teamder.models.Friend;
 import com.teamder.models.FriendChat;
 import com.teamder.models.FriendGame;
 import com.teamder.models.FriendRequest;
+import com.teamder.models.Gamer;
 import com.teamder.services.FriendChatService;
 import com.teamder.services.FriendGameService;
 import com.teamder.services.FriendRequestService;
 import com.teamder.services.FriendService;
+import com.teamder.services.GamerService;
 import com.teamder.services.GenericService;
 
 @Configuration
 public class ServiceConfig {
+	
+	@Bean
+	public GenericService<Gamer> GamerServiceFactory() {
+		return new GamerService();
+	}
 	
 	@Bean
 	public GenericService<FriendChat> FriendChatServiceFactory() {
