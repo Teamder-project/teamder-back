@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.teamder.models.GameProfile;
 import com.teamder.repositories.GameProfileRepository;
 
-public class GameProfileService implements GenericService<GameProfile> {
+public class GameProfileService implements GameProfileInterface {
 
 	@Autowired
 	private GameProfileRepository gameProfile;
+	
 	
 	/**
 	 * CRUD pour GameProfile
@@ -26,6 +27,11 @@ public class GameProfileService implements GenericService<GameProfile> {
 	public GameProfile getById(Long id) {
 		
 		return this.gameProfile.findById(id).get();
+	}
+	
+	public List<GameProfile> getByGamerId(Long id) {
+		
+		return this.gameProfile.findByGamerId(id);
 	}
 
 	@Override

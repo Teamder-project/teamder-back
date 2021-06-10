@@ -9,7 +9,6 @@ import com.teamder.models.FriendGame;
 import com.teamder.models.FriendRequest;
 import com.teamder.models.Gamer;
 import com.teamder.models.Game;
-import com.teamder.models.GameProfile;
 import com.teamder.models.GameProfileEdit;
 import com.teamder.services.FriendChatService;
 import com.teamder.services.FriendGameService;
@@ -17,6 +16,7 @@ import com.teamder.services.FriendRequestService;
 import com.teamder.services.FriendService;
 import com.teamder.services.GamerService;
 import com.teamder.services.GameProfileEditService;
+import com.teamder.services.GameProfileInterface;
 import com.teamder.services.GameProfileService;
 import com.teamder.services.GameService;
 import com.teamder.services.GenericService;
@@ -55,7 +55,7 @@ public class ServiceConfig {
 	}
 	
 	@Bean
-	public GenericService<GameProfile> GameProfileServiceFactory() {
+	public GameProfileInterface GameProfileServiceFactory() {
 		return new GameProfileService();
 	}
 	

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.GameProfile;
-import com.teamder.services.GenericService;
+import com.teamder.services.GameProfileInterface;
 
 @CrossOrigin
 @RestController
@@ -22,7 +22,7 @@ import com.teamder.services.GenericService;
 public class GameProfileController {
 
 	@Autowired
-	private GenericService<GameProfile> service;
+	private GameProfileInterface service;
 	
 	/**
 	 * CRUD pour GameProfile
@@ -36,6 +36,11 @@ public class GameProfileController {
 	@GetMapping("{id}")
 	public GameProfile getGameProfileById(@PathVariable Long id) {
 		return this.service.getById(id);
+	}
+	
+	@GetMapping("/gamer/{id}")
+	public List<GameProfile> getGameProfileByGamerId(@PathVariable Long id) {
+		return this.service.getByGamerId(id);
 	}
 	
 	@PostMapping()
