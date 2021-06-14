@@ -1,13 +1,16 @@
 package com.teamder.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.teamder.models.Gamer;
 import com.teamder.repositories.GamerRepository;
 
-public class GamerService implements GenericService<Gamer> {
+public class GamerService implements GamerInterface {
 
 	@Autowired
 	private GamerRepository repository;
@@ -28,6 +31,12 @@ public class GamerService implements GenericService<Gamer> {
 		return this.repository.findById(id).get();
 	}
 
+	@Override
+	public Optional<Gamer> getByEmail(String email) {
+		
+		return this.repository.findByEmail(email);
+	}
+	
 	@Override
 	public Gamer save(Gamer gamer) {
 		
@@ -50,4 +59,14 @@ public class GamerService implements GenericService<Gamer> {
 	 * Fin du CRUD pour Gamer
 	 */
 	
+	@Override
+	public Long loginGamer(Gamer gamer) {
+		Optional<Gamer> optional = this.repository.findByEmail(gamer.getEmail());
+		Gamer gamerDB = optional.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		
+		if(gamer.getPassword().equals(gamerDB.getPassword())) {
+			return gamerDB.getId();
+		}
+		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+	}
 }

@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.Gamer;
-import com.teamder.services.GenericService;
+import com.teamder.services.GamerInterface;
 
 @RestController
 @RequestMapping("gamers")
 public class GamerController {
 
 	@Autowired
-	private GenericService<Gamer> service;
+	private GamerInterface service;
 	
 	/**
 	 * CRUD pour Gamer
@@ -54,4 +54,9 @@ public class GamerController {
 	/**
 	 * Fin du CRUD pour Gamer
 	 */
+	
+	@PostMapping("connexion")
+	public Long connexion(@RequestBody Gamer gamer) {
+		return this.service.loginGamer(gamer);
+	}
 }
