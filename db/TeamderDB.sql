@@ -167,6 +167,7 @@ CREATE TABLE GAMER_LANGUAGE(
 CREATE TABLE GAME(
         id       Int  Auto_increment NOT NULL,
         name     Varchar (255),
+        alias    Varchar (255),
         editor   Varchar (255),
         released Date
 	,CONSTRAINT GAME_PK PRIMARY KEY (id)
@@ -250,7 +251,6 @@ CREATE TABLE GAMER_EDIT(
 
 CREATE TABLE GAME_PROFILE_EDIT(
         id              Int  Auto_increment NOT NULL,
-        game            Varchar (255),
         nickname_game   Varchar (255),
         goals           Varchar (255),
         schedule        Varchar (255),
