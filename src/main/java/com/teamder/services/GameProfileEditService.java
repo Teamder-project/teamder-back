@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.GameProfileEdit;
 import com.teamder.repositories.GameProfileEditRepository;
+import com.teamder.services.interfaces.GenericService;
 
 public class GameProfileEditService implements GenericService<GameProfileEdit> {
 

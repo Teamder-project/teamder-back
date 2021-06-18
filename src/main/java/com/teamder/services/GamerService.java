@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.teamder.models.Gamer;
 import com.teamder.repositories.GamerRepository;
+import com.teamder.services.interfaces.GamerInterface;
 
 public class GamerService implements GamerInterface {
 

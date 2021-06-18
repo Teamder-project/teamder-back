@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.GameProfile;
-import com.teamder.services.GameProfileInterface;
+import com.teamder.services.interfaces.GameProfileInterface;
 
 @CrossOrigin
 @RestController
@@ -31,6 +31,11 @@ public class GameProfileController {
 	@GetMapping()
 	public List<GameProfile> getGameProfiles() {
 		return this.service.getAll();
+	}
+	
+	@PostMapping("swipe")
+	public List<GameProfile> getGameProfilesForSwipe(@RequestBody GameProfile gameprofile) {	
+		return this.service.getProfilesForSwipe(gameprofile);
 	}
 	
 	@GetMapping("{id}")

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.Game;
 import com.teamder.repositories.GameRepository;
+import com.teamder.services.interfaces.GenericService;
 
 public class GameService implements GenericService<Game> {
 

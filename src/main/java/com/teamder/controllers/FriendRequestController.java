@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.FriendRequest;
-import com.teamder.services.GenericService;
+import com.teamder.services.interfaces.GenericService;
 
 @RestController
 @RequestMapping("friend-requests")

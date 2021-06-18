@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teamder.models.GameProfileEdit;
+import com.teamder.models.Swipe;
 import com.teamder.services.interfaces.GenericService;
 
 @RestController
-@RequestMapping("game-profiles-edit")
-public class GameProfileEditController {
+@RequestMapping("swipes")
+public class SwipeController {
 
 	@Autowired
-	private GenericService<GameProfileEdit> service;
+	private GenericService<Swipe> service;
 	
 	/**
-	 * CRUD pour GameProfileEdit
+	 * CRUD pour Swipe
 	 */
 	
 	@GetMapping()
-	public List<GameProfileEdit> getGameProfileEdits() {
+	public List<Swipe> getSwipes() {
 		return this.service.getAll();
 	}
 	
 	@GetMapping("{id}")
-	public GameProfileEdit getGameProfileEditById(@PathVariable Long id) {
+	public Swipe getSwipeById(@PathVariable Long id) {
 		return this.service.getById(id);
 	}
 	
 	@PostMapping()
-	public GameProfileEdit saveGameProfileEdit(@RequestBody GameProfileEdit gameProfileEdit) {
-		return this.service.save(gameProfileEdit);
+	public Swipe saveSwipe(@RequestBody Swipe swipe) {
+		return this.service.save(swipe);
 	}
 	
 	@PatchMapping()
-	public GameProfileEdit updateGameProfileEdit(@RequestBody GameProfileEdit gameProfileEdit) {
-		return this.service.save(gameProfileEdit);
+	public Swipe updateSwipe(@RequestBody Swipe swipe) {
+		return this.service.save(swipe);
 	}
 	
 	@DeleteMapping("{id}")
@@ -52,6 +52,6 @@ public class GameProfileEditController {
 	}
 	
 	/**
-	 * Fin du CRUD pour GameProfileEdit
+	 * Fin du CRUD pour Swipe
 	 */
 }

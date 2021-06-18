@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.FriendRequest;
 import com.teamder.repositories.FriendRequestRepository;
+import com.teamder.services.interfaces.GenericService;
 
 public class FriendRequestService implements GenericService<FriendRequest> {
 

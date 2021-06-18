@@ -1,11 +1,13 @@
 package com.teamder.services;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.GameProfile;
 import com.teamder.repositories.GameProfileRepository;
+import com.teamder.services.interfaces.GameProfileInterface;
 
 public class GameProfileService implements GameProfileInterface {
 
@@ -34,6 +36,7 @@ public class GameProfileService implements GameProfileInterface {
 		return this.gameProfile.findByGamerId(id);
 	}
 
+	
 	@Override
 	public GameProfile save(GameProfile gameProfile) {
 		
@@ -51,6 +54,14 @@ public class GameProfileService implements GameProfileInterface {
 		
 		this.gameProfile.deleteById(id);
 		
+	}
+
+	@Override
+	public List<GameProfile> getProfilesForSwipe(GameProfile gameProfile) {
+		GameProfile gameProfileDb = this.gameProfile.getById(gameProfile.getId());
+		List<GameProfile> result = this.gameProfile.getProfilesSwipe(gameProfileDb.getId(), gameProfileDb.getGamer().getId(), gameProfileDb.getGame().getId());
+		Collections.shuffle(result);
+		return result;
 	}
 	
 	/**

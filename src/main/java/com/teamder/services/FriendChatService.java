@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.FriendChat;
 import com.teamder.repositories.FriendChatRepository;
+import com.teamder.services.interfaces.GenericService;
 
 public class FriendChatService implements GenericService<FriendChat> {
 

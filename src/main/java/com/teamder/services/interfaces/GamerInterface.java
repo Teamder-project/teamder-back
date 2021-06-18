@@ -1,4 +1,4 @@
-package com.teamder.services;
+package com.teamder.services.interfaces;
 
 import java.util.Optional;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.Game;
-import com.teamder.services.GenericService;
+import com.teamder.services.interfaces.GenericService;
 
 @CrossOrigin
 @RestController
