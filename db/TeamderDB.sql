@@ -5,10 +5,10 @@ DROP SCHEMA IF EXISTS `teamder`;
 CREATE SCHEMA `teamder` DEFAULT CHARACTER SET utf8;
 USE `teamder`;
 #------------------------------------------------------------
-# Table: GAMER
+# Table: gamer
 #------------------------------------------------------------
 
-CREATE TABLE GAMER(
+CREATE TABLE gamer(
         id       Int  Auto_increment NOT NULL,
         username Varchar (255),
         password Varchar (255),
@@ -17,30 +17,30 @@ CREATE TABLE GAMER(
         gender   Varchar (255),
         country  Varchar (255),
         avatar   Longtext
-	,CONSTRAINT GAMER_PK PRIMARY KEY (id)
+	,CONSTRAINT gamer_pk PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: GROUP_CHAT
+# Table: group_chat
 #------------------------------------------------------------
 
-CREATE TABLE GROUP_CHAT(
+CREATE TABLE group_chat(
         id       Int  Auto_increment NOT NULL,
         name     Varchar (255),
         logo     Varchar (255),
         id_GAMER Int
-	,CONSTRAINT GROUP_CHAT_PK PRIMARY KEY (id)
+	,CONSTRAINT group_chat_PK PRIMARY KEY (id)
 
-	,CONSTRAINT GROUP_CHAT_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
+	,CONSTRAINT group_chat_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: LANGUAGE
+# Table: language
 #------------------------------------------------------------
 
-CREATE TABLE LANGUAGE(
+CREATE TABLE language(
         id       Int  Auto_increment NOT NULL,
         language Varchar (255)
 	,CONSTRAINT LANGUAGE_PK PRIMARY KEY (id)
@@ -48,123 +48,123 @@ CREATE TABLE LANGUAGE(
 
 
 #------------------------------------------------------------
-# Table: FRIEND_CHAT
+# Table: friend_chat
 #------------------------------------------------------------
 
-CREATE TABLE FRIEND_CHAT(
+CREATE TABLE friend_chat(
         id         Int  Auto_increment NOT NULL,
         message    Text,
         time       Datetime,
         id_GAMER   Int,
         id_2_GAMER Int
-	,CONSTRAINT FRIEND_CHAT_PK PRIMARY KEY (id)
+	,CONSTRAINT friend_chat_PK PRIMARY KEY (id)
 
-    ,CONSTRAINT FRIEND_CHAT_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
-    ,CONSTRAINT FRIEND_CHAT_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES GAMER(id)
+    ,CONSTRAINT friend_chat_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
+    ,CONSTRAINT friend_chat_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES gamer(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: FRIEND
+# Table: friend
 #------------------------------------------------------------
 
-CREATE TABLE FRIEND(
+CREATE TABLE friend(
         id         Int  Auto_increment NOT NULL,
         date_match Datetime,
         id_GAMER   Int,
         id_2_GAMER Int
-	,CONSTRAINT FRIEND_PK PRIMARY KEY (id)
+	,CONSTRAINT friend_PK PRIMARY KEY (id)
 
-    ,CONSTRAINT FRIEND_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
-    ,CONSTRAINT FRIEND_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES GAMER(id)
+    ,CONSTRAINT friend_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
+    ,CONSTRAINT friend_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES gamer(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: FRIEND_REQUEST
+# Table: friend_request
 #------------------------------------------------------------
 
-CREATE TABLE FRIEND_REQUEST(
+CREATE TABLE friend_request(
         id           Int  Auto_increment NOT NULL,
         date_request Datetime,
         id_GAMER     Int,
         id_2_GAMER   Int
-	,CONSTRAINT FRIEND_REQUEST_PK PRIMARY KEY (id)
+	,CONSTRAINT friend_request_PK PRIMARY KEY (id)
 
-    ,CONSTRAINT FRIEND_REQUEST_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
-    ,CONSTRAINT FRIEND_REQUEST_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES GAMER(id)
+    ,CONSTRAINT friend_request_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
+    ,CONSTRAINT friend_request_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES gamer(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: RATING
+# Table: rating
 #------------------------------------------------------------
 
-CREATE TABLE RATING(
+CREATE TABLE rating(
         id         Int  Auto_increment NOT NULL,
         rating     Int,
         id_GAMER   Int,
         id_2_GAMER Int
-	,CONSTRAINT RATING_PK PRIMARY KEY (id)
+	,CONSTRAINT rating_PK PRIMARY KEY (id)
 
-    ,CONSTRAINT RATING_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
-    ,CONSTRAINT RATING_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES GAMER(id)
+    ,CONSTRAINT rating_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
+    ,CONSTRAINT rating_GAMER_FK_2 FOREIGN KEY (id_2_GAMER) REFERENCES gamer(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: GROUP_CHAT_MESSAGE
+# Table: group_chat_message
 #------------------------------------------------------------
 
-CREATE TABLE GROUP_CHAT_MESSAGE(
+CREATE TABLE group_chat_message(
         id            Int  Auto_increment NOT NULL,
         message       Text,
         time          Datetime,
         id_GAMER      Int,
-        id_GROUP_CHAT Int
-	,CONSTRAINT GROUP_CHAT_MESSAGE_PK PRIMARY KEY (id)
+        id_group_chat Int
+	,CONSTRAINT group_chat_message_PK PRIMARY KEY (id)
 
-	,CONSTRAINT GROUP_CHAT_MESSAGE_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
-	,CONSTRAINT GROUP_CHAT_MESSAGE_GROUP_CHAT0_FK FOREIGN KEY (id_GROUP_CHAT) REFERENCES GROUP_CHAT(id)
+	,CONSTRAINT group_chat_message_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
+	,CONSTRAINT group_chat_message_group_chat0_FK FOREIGN KEY (id_GROUP_CHAT) REFERENCES group_chat(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: GAMER_GROUP_CHAT
+# Table: gamer_group_chat
 #------------------------------------------------------------
 
-CREATE TABLE GAMER_GROUP_CHAT(
+CREATE TABLE gamer_group_chat(
         id            Int  Auto_increment NOT NULL,
         date_add      Datetime,
         id_GAMER      Int,
-        id_GROUP_CHAT Int
-	,CONSTRAINT GAMER_GROUP_CHAT_PK PRIMARY KEY (id)
+        id_group_chat Int
+	,CONSTRAINT GAMER_group_chat_PK PRIMARY KEY (id)
 
-	,CONSTRAINT GAMER_GROUP_CHAT_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
-	,CONSTRAINT GAMER_GROUP_CHAT_GROUP_CHAT0_FK FOREIGN KEY (id_GROUP_CHAT) REFERENCES GROUP_CHAT(id)
+	,CONSTRAINT GAMER_group_chat_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
+	,CONSTRAINT GAMER_group_chat_group_chat0_FK FOREIGN KEY (id_GROUP_CHAT) REFERENCES group_chat(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: GAMER_LANGUAGE
+# Table: gamer_language
 #------------------------------------------------------------
 
-CREATE TABLE GAMER_LANGUAGE(
+CREATE TABLE gamer_language(
         id          Int  Auto_increment NOT NULL,
         id_LANGUAGE Int,
         id_GAMER    Int
 	,CONSTRAINT GAMER_LANGUAGE_PK PRIMARY KEY (id)
 
-	,CONSTRAINT GAMER_LANGUAGE_LANGUAGE_FK FOREIGN KEY (id_LANGUAGE) REFERENCES LANGUAGE(id)
-	,CONSTRAINT GAMER_LANGUAGE_GAMER0_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
+	,CONSTRAINT GAMER_LANGUAGE_LANGUAGE_FK FOREIGN KEY (id_LANGUAGE) REFERENCES language(id)
+	,CONSTRAINT GAMER_LANGUAGE_GAMER0_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: GAME
+# Table: game
 #------------------------------------------------------------
 
-CREATE TABLE GAME(
+CREATE TABLE game(
         id       Int  Auto_increment NOT NULL,
         name     Varchar (255),
         alias    Varchar (255),
@@ -175,10 +175,10 @@ CREATE TABLE GAME(
 
 
 #------------------------------------------------------------
-# Table: GAME_PROFILE
+# Table: game_profile
 #------------------------------------------------------------
 
-CREATE TABLE GAME_PROFILE(
+CREATE TABLE game_profile(
         id            Int  Auto_increment NOT NULL,
         nickname_game Varchar (255),
         goals         Varchar (255),
@@ -188,47 +188,47 @@ CREATE TABLE GAME_PROFILE(
         id_GAME       Int
 	,CONSTRAINT GAME_PROFILE_PK PRIMARY KEY (id)
 
-	,CONSTRAINT GAME_PROFILE_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
-	,CONSTRAINT GAME_PROFILE_GAME0_FK FOREIGN KEY (id_GAME) REFERENCES GAME(id)
+	,CONSTRAINT GAME_PROFILE_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
+	,CONSTRAINT GAME_PROFILE_GAME0_FK FOREIGN KEY (id_GAME) REFERENCES game(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: SWIPE
+# Table: swipe
 #------------------------------------------------------------
 
-CREATE TABLE SWIPE(
+CREATE TABLE swipe(
         id                Int  Auto_increment NOT NULL,
         state             Bool,
         id_GAME_PROFILE   Int,
         id_2_GAME_PROFILE Int
 	,CONSTRAINT SWIPE_PK PRIMARY KEY (id)
 
-    ,CONSTRAINT SWIPE_GAME_PROFILE_FK FOREIGN KEY (id_GAME_PROFILE) REFERENCES GAME_PROFILE(id)
-    ,CONSTRAINT SWIPE_GAME_PROFILE_FK_2 FOREIGN KEY (id_2_GAME_PROFILE) REFERENCES GAME_PROFILE(id)
+    ,CONSTRAINT SWIPE_GAME_PROFILE_FK FOREIGN KEY (id_GAME_PROFILE) REFERENCES game_profile(id)
+    ,CONSTRAINT SWIPE_GAME_PROFILE_FK_2 FOREIGN KEY (id_2_GAME_PROFILE) REFERENCES game_profile(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: FRIEND_GAME
+# Table: friend_game
 #------------------------------------------------------------
 
-CREATE TABLE FRIEND_GAME(
+CREATE TABLE friend_game(
         id        Int  Auto_increment NOT NULL,
-        id_FRIEND Int,
+        id_friend Int,
         id_GAME   Int
-	,CONSTRAINT FRIEND_GAME_PK PRIMARY KEY (id)
+	,CONSTRAINT friend_GAME_PK PRIMARY KEY (id)
 
-	,CONSTRAINT FRIEND_GAME_FRIEND_FK FOREIGN KEY (id_FRIEND) REFERENCES FRIEND(id)
-	,CONSTRAINT FRIEND_GAME_GAME0_FK FOREIGN KEY (id_GAME) REFERENCES GAME(id)
+	,CONSTRAINT friend_GAME_friend_FK FOREIGN KEY (id_friend) REFERENCES friend(id)
+	,CONSTRAINT friend_GAME_GAME0_FK FOREIGN KEY (id_GAME) REFERENCES game(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: GAMER_EDIT
+# Table: gamer_edit
 #------------------------------------------------------------
 
-CREATE TABLE GAMER_EDIT(
+CREATE TABLE gamer_edit(
         id        Int  Auto_increment NOT NULL,
         username  Varchar (255),
         password  Varchar (255),
@@ -241,15 +241,15 @@ CREATE TABLE GAMER_EDIT(
         id_GAMER  Int
 	,CONSTRAINT GAMER_EDIT_PK PRIMARY KEY (id)
 
-	,CONSTRAINT GAMER_EDIT_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES GAMER(id)
+	,CONSTRAINT GAMER_EDIT_GAMER_FK FOREIGN KEY (id_GAMER) REFERENCES gamer(id)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: GAME_PROFILE_EDIT
+# Table: game_profile_edit
 #------------------------------------------------------------
 
-CREATE TABLE GAME_PROFILE_EDIT(
+CREATE TABLE game_profile_edit(
         id              Int  Auto_increment NOT NULL,
         nickname_game   Varchar (255),
         goals           Varchar (255),
@@ -259,6 +259,6 @@ CREATE TABLE GAME_PROFILE_EDIT(
         id_GAME_PROFILE Int
 	,CONSTRAINT GAME_PROFILE_EDIT_PK PRIMARY KEY (id)
 
-	,CONSTRAINT GAME_PROFILE_EDIT_GAME_PROFILE_FK FOREIGN KEY (id_GAME_PROFILE) REFERENCES GAME_PROFILE(id)
+	,CONSTRAINT GAME_PROFILE_EDIT_GAME_PROFILE_FK FOREIGN KEY (id_GAME_PROFILE) REFERENCES game_profile(id)
 )ENGINE=InnoDB;
 
