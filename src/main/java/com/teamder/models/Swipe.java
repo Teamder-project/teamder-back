@@ -18,7 +18,7 @@ public class Swipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private boolean state;
+	private int state;
 	@ManyToOne
 	@JoinColumn(name = "id_GAME_PROFILE", referencedColumnName = "id")
 	private GameProfile swiper;
