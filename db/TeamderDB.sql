@@ -261,4 +261,43 @@ CREATE TABLE game_profile_edit(
 
 	,CONSTRAINT GAME_PROFILE_EDIT_GAME_PROFILE_FK FOREIGN KEY (id_GAME_PROFILE) REFERENCES game_profile(id)
 )ENGINE=InnoDB;
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+INSERT INTO `teamder`.`game` (`id`, `name`, `editor`, `released`, `alias`) 
+	VALUES 
+    ('1', 'League Of Legends', 'Riot Games', '2009-10-27', 'lol'),
+	('2', 'Apex Legends', 'Respawn Entertainment', '2019-02-04', 'apex'),
+    ('3', 'Rocket League', 'Psyonix', '2015-07-07', 'rl'),
+    ('4', 'Counter Strike : Global Offensive', 'Valve', '2012-08-21', 'csgo');
 
+INSERT INTO `teamder`.`gamer` (`id`, `username`, `password`, `email`, `birthday`, `gender`, `country`) 
+	VALUES 
+    ('1', 'Juju', 'juju', 'juju@juju.com', '1994-09-11', 'F', 'France'),
+    ('2', 'Max', 'max', 'max@max.com', '1992-01-01', 'M', 'France'),
+    ('3', 'Math', 'math', 'math@math.com', '1998-01-01', 'M', 'France'),
+    ('4', 'Mig', 'mig', 'mig@mig.com', '1998-01-01', 'M', 'France'),
+    ('5', 'BeatrixKuddo', 'bea', 'bea@bea.com', '1970-04-29', 'M', 'US'),
+    ('6', 'DalaiLama', 'dalai', 'dalai@dalai.com', '1391-01-01', 'M', 'Tibet'),
+    ('7', 'L\'Elfe', 'elfe', 'elfe@elfe', '2001-01-01', 'F', 'France'),
+    ('8', 'Tenshirock', 'ten', 'ten@ten.com', '2008-11-07', 'F', 'France'),
+    ('9', 'Smourbiff', 'smour', 'smour@smour.com', '2010-01-01', 'NR', 'France'),
+    ('10', 'Twix-dte', 'twix', 'twix-dte@twix.com', '1967-01-01', 'NR', 'US'),
+    ('11', 'Twix-gche', 'twix', 'twix-gche@twix.com', '1967-01-01', 'NR', 'US'),
+    ('12', 'Totoro', 'toto', 'totoro@totoro.com', '1988-04-16', 'NR', 'Japon'),
+    ('13', 'Schumacher', 'schumi', 'schumi@schumi.com', '1969-01-03', 'M', 'Deutschland'),
+    ('14', 'Zizou', 'zizou', 'zizou@zizou.com', '1972-06-23', 'M', 'France'),
+    ('15', 'Hitman', 'hit', 'hit@hit.com', '2000-01-01', 'M', 'Danemark');
+
+INSERT INTO game_profile (nickname_game, goals, schedule, description, id_GAMER, id_GAME) 
+	VALUES 
+    ('Jiujiu', 'Chill', 'samedi matin', 'Cherche mate pour ranked sans se prendre la tête, niveau silver-gold. Joue à tous les postes sauf mid', '1', '1'),
+    ('Killeuse', 'Kill', 'tout le temps', 'Cherche mate pour la gagne', '5', '4'),
+    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '1'),
+    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '2'),
+    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '3'),
+    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '4'),
+    ('Twix-droit', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '10', '1'),
+    ('Twix-droit', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '10', '2'),
+    ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '1'),
+    ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '2');
