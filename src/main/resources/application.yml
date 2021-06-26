@@ -1,0 +1,9 @@
+server:
+	port: ${SERVER_PORT:8080}
+
+sping:
+	data:
+		mysql:
+			host: ${MYSQL_HOST:localhost}
+			port: ${MYSQL_PORT:3306}
+			
