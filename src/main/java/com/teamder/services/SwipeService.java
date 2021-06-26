@@ -45,7 +45,8 @@ public class SwipeService implements GenericService<Swipe> {
 		Swipe swipeDB = this.swipe.save(swipe);
 		if(swipeDB.getState() == 1)
 		{
-			Swipe result = this.swipe.findSwipeBySwiperIdAndSwipedIdAndState(swipe.getSwiper().getId(), swipe.getSwiped().getId(), 1);
+			Swipe result = this.swipe.findSwipeBySwiperIdAndSwipedIdAndState(swipe.getSwiped().getId(), swipe.getSwiper().getId(), 1);
+			System.out.println(result);
 			if(result != null) {
 				Friend friend = new Friend(LocalDateTime.now(), swipe.getSwiper().getGamer(), swipe.getSwiped().getGamer());
 				friend = this.friendService.save(friend);
