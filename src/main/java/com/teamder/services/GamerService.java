@@ -28,7 +28,7 @@ public class GamerService implements GamerInterface {
 
 	@Override
 	public Gamer getById(Long id) {
-		
+		System.out.println(this.repository.findById(id));
 		return this.repository.findById(id).get();
 	}
 
