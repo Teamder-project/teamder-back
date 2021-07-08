@@ -15,11 +15,13 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.teamder.config.MessageDecoder;
 import com.teamder.config.MessageEncoder;
 import com.teamder.models.FriendChat;
 
+@CrossOrigin
 @Component
 @ServerEndpoint(value = "/chat/{id}", decoders = MessageDecoder.class, encoders = MessageEncoder.class)
 public class ChatController {
@@ -38,6 +40,7 @@ public class ChatController {
 
 	@OnMessage
 	public void onMessage(Session session, FriendChat message) throws IOException, EncodeException {
+		System.out.println(message);
 		session.getBasicRemote().sendObject(message);
 	}
 

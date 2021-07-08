@@ -17,11 +17,6 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-	  	<dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
