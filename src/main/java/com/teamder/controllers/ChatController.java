@@ -15,55 +15,43 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.teamder.config.MessageDecoder;
 import com.teamder.config.MessageEncoder;
 import com.teamder.models.FriendChat;
 
-@CrossOrigin
 @Component
 @ServerEndpoint(value = "/chat/{id}", decoders = MessageDecoder.class, encoders = MessageEncoder.class)
 public class ChatController {
 	private Session session;
+	private Long id;
 	private static final Set<ChatController> chatEndpoints = new CopyOnWriteArraySet<>();
-	private static HashMap<String, Long> users = new HashMap<>();
+	private static HashMap<Long, Session> sessions = new HashMap<>();
 
 	@OnOpen
 	public void onOpen(Session session, @PathParam("id") Long id) throws IOException, EncodeException {
-		System.out.println("Je suis la");
 		this.session = session;
+		this.id = id;
 		chatEndpoints.add(this);
-		users.put(session.getId(), id);
-
+		sessions.put(id, session);
 	}
 
 	@OnMessage
 	public void onMessage(Session session, FriendChat message) throws IOException, EncodeException {
-		System.out.println(message);
 		session.getBasicRemote().sendObject(message);
+		if(ChatController.sessions.get(message.getReceiver().getId()) != null) {
+			ChatController.sessions.get(message.getReceiver().getId()).getBasicRemote().sendObject(message);
+		}
 	}
 
 	@OnClose
 	public void onClose(Session session) throws IOException, EncodeException {
 		chatEndpoints.remove(this);
+		sessions.remove(id);
 	}
 
 	@OnError
 	public void onError(Session session, Throwable throwable) {
 		System.out.println("Erreur");
 	}
-
-	private static void broadcast(FriendChat message) throws IOException, EncodeException {
-		chatEndpoints.forEach(endpoint -> {
-			synchronized (endpoint) {
-				try {
-					endpoint.session.getBasicRemote().sendObject(message);
-				} catch (IOException | EncodeException e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 }
