@@ -271,23 +271,24 @@ INSERT INTO `teamder`.`game` (`id`, `name`, `editor`, `released`, `alias`)
     ('3', 'Rocket League', 'Psyonix', '2015-07-07', 'rl'),
     ('4', 'Counter Strike : Global Offensive', 'Valve', '2012-08-21', 'csgo');
 
-INSERT INTO `teamder`.`gamer` (`id`, `username`, `password`, `email`, `birthday`, `gender`, `country`) 
+INSERT INTO `teamder`.`gamer` (`id`, `username`, `password`, `email`, `birthday`, `gender`, `country`, `avatar`) 
 	VALUES 
-    ('1', 'Juju', 'juju', 'juju@juju.com', '1994-09-11', 'F', 'France'),
-    ('2', 'Max', 'max', 'max@max.com', '1992-01-01', 'M', 'France'),
-    ('3', 'Math', 'math', 'math@math.com', '1998-01-01', 'M', 'France'),
-    ('4', 'Mig', 'mig', 'mig@mig.com', '1998-01-01', 'M', 'France'),
-    ('5', 'BeatrixKuddo', 'bea', 'bea@bea.com', '1970-04-29', 'M', 'US'),
-    ('6', 'DalaiLama', 'dalai', 'dalai@dalai.com', '1391-01-01', 'M', 'Tibet'),
-    ('7', 'L\'Elfe', 'elfe', 'elfe@elfe', '2001-01-01', 'F', 'France'),
-    ('8', 'Tenshirock', 'ten', 'ten@ten.com', '2008-11-07', 'F', 'France'),
-    ('9', 'Smourbiff', 'smour', 'smour@smour.com', '2010-01-01', 'NR', 'France'),
-    ('10', 'Twix-dte', 'twix', 'twix-dte@twix.com', '1967-01-01', 'NR', 'US'),
-    ('11', 'Twix-gche', 'twix', 'twix-gche@twix.com', '1967-01-01', 'NR', 'US'),
-    ('12', 'Totoro', 'toto', 'totoro@totoro.com', '1988-04-16', 'NR', 'Japon'),
-    ('13', 'Schumacher', 'schumi', 'schumi@schumi.com', '1969-01-03', 'M', 'Deutschland'),
-    ('14', 'Zizou', 'zizou', 'zizou@zizou.com', '1972-06-23', 'M', 'France'),
-    ('15', 'Hitman', 'hit', 'hit@hit.com', '2000-01-01', 'M', 'Danemark');
+		('1', 'Juju', 'juju', 'juju@juju.com', '1994-09-11', 'F', 'France','katarina'),
+		('2', 'Max', 'max', 'max@max.com', '1992-01-01', 'M', 'France', 'teemo'),
+		('3', 'Math', 'math', 'math@math.com', '1998-01-01', 'M', 'France', 'teemo'),
+		('4', 'Lutyz', '12345', 'Lutyz@gmail.com', '1998-11-13', 'Homme', 'France', 'ahri'),
+		('5', 'BeatrixKuddo', 'bea', 'bea@bea.com', '1970-04-29', 'F', 'US','katarina'),
+		('6', 'DalaiLama', 'dalai', 'dalai@dalai.com', '1391-01-01', 'M', 'Tibet', 'default'),
+		('7', 'L\'Elfe', 'elfe', 'elfe@elfe', '2001-01-01', 'F', 'France','ahri'),
+		('8', 'Tenshirock', 'ten', 'ten@ten.com', '2008-11-07', 'F', 'France','ak47-cs'),
+		('9', 'Smourbiff', 'smour', 'smour@smour.com', '2010-01-01', 'NR', 'France', 'teemo'),
+		('10', 'Twix-dte', 'twix', 'twix-dte@twix.com', '1967-01-01', 'NR', 'US','trainee-rl'),
+		('11', 'Twix-gche', 'twix', 'twix-gche@twix.com', '1967-01-01', 'NR', 'US','trainee-rl'),
+		('12', 'Totoro', 'toto', 'totoro@totoro.com', '1988-04-16', 'NR', 'Japon','teemo'),
+		('13', 'Schumacher', 'schumi', 'schumi@schumi.com', '1969-01-03', 'M', 'Deutschland', 'masamune'),
+		('14', 'Zizou', 'zizou', 'zizou@zizou.com', '1972-06-23', 'M', 'France','masamune'),
+		('15', 'Hitman', 'hit', 'hit@hit.com', '2000-01-01', 'M', 'Danemark','ak47-cs'),
+		('16', 'Lapin', 'lapin', 'lapin@lapin.com', '1900-01-01', 'NR', 'France','katarina');
 
 INSERT INTO game_profile (nickname_game, goals, schedule, description, id_GAMER, id_GAME) 
 	VALUES 
