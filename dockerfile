@@ -7,4 +7,5 @@ RUN mvn install -DskipTests
 FROM openjdk:11-slim
 WORKDIR /app
 COPY --from=builder /app/target/teamder-back-0.0.1-SNAPSHOT.jar . 
+
 CMD ["java", "-jar", "teamder-back-0.0.1-SNAPSHOT.jar"]

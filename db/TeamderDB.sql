@@ -312,3 +312,4 @@ INSERT INTO `teamder`.`game_profile` (`nickname_game`, `goals`, `schedule`, `des
                 ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '1'),
                 ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '2'),
                 ('Pan-pan', 'Chill', 'mercredi', 'Préfère taper IG plutôt qu\'IRL. Ne vous fiez pas aux apparences, je suis plus berzerk que lapinou.', '16', '4');
+
