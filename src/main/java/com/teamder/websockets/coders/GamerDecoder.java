@@ -1,19 +1,19 @@
-package com.teamder.config;
+package com.teamder.websockets.coders;
 
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 
-import com.teamder.models.FriendChat;
+import com.teamder.models.Gamer;
 import com.google.gson.Gson;
 
-public class MessageDecoder implements Decoder.Text<FriendChat> {
+public class GamerDecoder implements Decoder.Text<Gamer> {
 
     private static Gson gson = new Gson();
 
     @Override
-    public FriendChat decode(String s) throws DecodeException {
-        FriendChat message = gson.fromJson(s, FriendChat.class);
+    public Gamer decode(String s) throws DecodeException {
+        Gamer message = gson.fromJson(s, Gamer.class);
         return message;
     }
 

@@ -1,4 +1,4 @@
-package com.teamder.controllers;
+package com.teamder.websockets;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,7 +8,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import javax.websocket.EncodeException;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
-import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
@@ -16,17 +15,16 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Component;
 
-import com.teamder.config.MessageDecoder;
-import com.teamder.config.MessageEncoder;
-import com.teamder.models.FriendChat;
+import com.teamder.websockets.coders.GamerDecoder;
+import com.teamder.websockets.coders.GamerEncoder;
 
 @Component
-@ServerEndpoint(value = "/chat/{id}", decoders = MessageDecoder.class, encoders = MessageEncoder.class)
-public class ChatController {
+@ServerEndpoint(value = "/notifsSwipe/{id}", decoders = GamerDecoder.class, encoders = GamerEncoder.class)
+public class NotifsSwipeWebsocket {
 	private Session session;
 	private Long id;
-	private static final Set<ChatController> chatEndpoints = new CopyOnWriteArraySet<>();
-	private static HashMap<Long, Session> sessions = new HashMap<>();
+	private static final Set<NotifsSwipeWebsocket> chatEndpoints = new CopyOnWriteArraySet<>();
+	public static HashMap<Long, Session> sessions = new HashMap<>();
 
 	@OnOpen
 	public void onOpen(Session session, @PathParam("id") Long id) throws IOException, EncodeException {
@@ -34,14 +32,6 @@ public class ChatController {
 		this.id = id;
 		chatEndpoints.add(this);
 		sessions.put(id, session);
-	}
-
-	@OnMessage
-	public void onMessage(Session session, FriendChat message) throws IOException, EncodeException {
-		session.getBasicRemote().sendObject(message);
-		if(ChatController.sessions.get(message.getReceiver().getId()) != null) {
-			ChatController.sessions.get(message.getReceiver().getId()).getBasicRemote().sendObject(message);
-		}
 	}
 
 	@OnClose
@@ -54,4 +44,6 @@ public class ChatController {
 	public void onError(Session session, Throwable throwable) {
 		System.out.println("Erreur");
 	}
+	
+	
 }
