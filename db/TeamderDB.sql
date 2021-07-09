@@ -266,10 +266,10 @@ CREATE TABLE game_profile_edit(
 #------------------------------------------------------------
 INSERT INTO `teamder`.`game` (`id`, `name`, `editor`, `released`, `alias`) 
 	VALUES 
-    ('1', 'League Of Legends', 'Riot Games', '2009-10-27', 'lol'),
-	('2', 'Apex Legends', 'Respawn Entertainment', '2019-02-04', 'apex'),
-    ('3', 'Rocket League', 'Psyonix', '2015-07-07', 'rl'),
-    ('4', 'Counter Strike : Global Offensive', 'Valve', '2012-08-21', 'csgo');
+        ('1', 'League Of Legends', 'Riot Games', '2009-10-27', 'lol'),
+        ('2', 'Apex Legends', 'Respawn Entertainment', '2019-02-04', 'apex'),
+        ('3', 'Rocket League', 'Psyonix', '2015-07-07', 'rl'),
+        ('4', 'Counter Strike : Global Offensive', 'Valve', '2012-08-21', 'csgo');
 
 INSERT INTO `teamder`.`gamer` (`id`, `username`, `password`, `email`, `birthday`, `gender`, `country`, `avatar`) 
 	VALUES 
@@ -290,15 +290,26 @@ INSERT INTO `teamder`.`gamer` (`id`, `username`, `password`, `email`, `birthday`
 		('15', 'Hitman', 'hit', 'hit@hit.com', '2000-01-01', 'M', 'Danemark','ak47-cs'),
 		('16', 'Lapin', 'lapin', 'lapin@lapin.com', '1900-01-01', 'NR', 'France','katarina');
 
-INSERT INTO game_profile (nickname_game, goals, schedule, description, id_GAMER, id_GAME) 
-	VALUES 
-    ('Jiujiu', 'Chill', 'samedi matin', 'Cherche mate pour ranked sans se prendre la tête, niveau silver-gold. Joue à tous les postes sauf mid', '1', '1'),
-    ('Killeuse', 'Kill', 'tout le temps', 'Cherche mate pour la gagne', '5', '4'),
-    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '1'),
-    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '2'),
-    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '3'),
-    ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '4'),
-    ('Twix-droit', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '10', '1'),
-    ('Twix-droit', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '10', '2'),
-    ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '1'),
-    ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '2');
+INSERT INTO `teamder`.`game_profile` (`nickname_game`, `goals`, `schedule`, `description`, `id_GAMER`, `id_GAME`)
+        VALUES
+                ('Jiujiu', 'Chill', 'samedi matin', 'Cherche mate pour ranked sans se prendre la tête, niveau silver-gold. Joue à tous les postes sauf mid', '1', '1'),
+                ('Jiujiu', 'Troll', 'samedi après-midi', 'Cherche mate pour one-shot tout ce qui passe. Tir aux pigeons en vue.', '1', '4'),
+                ('Lutyz', 'Try-hard', 'week-end', 'Cherche mate pour ranked gold-plat. Je suis midlaner', 4, 1),
+                ('Lutyz', 'Try-hard', 'week-end', 'Cherche mate pour ranked Grand Champion.', 4, 3),
+                ('Lutyz', 'Chill', 'week-end', 'Cherche mate pour ranked chill plat-diam. Je joue Octane ou Valkyrie', 4, 2);
+                ('Killeuse', 'Kill', 'tout le temps', 'Cherche mate pour la gagne. Joue des assassins, préférence mid et jungle', '5', '1'),
+                ('Killeuse', 'Kill', 'tout le temps', 'Cherche mate pour la gagne', '5', '4'),
+                ('Zizou', 'Troll', 'du lundi au dimanche', 'Avec moi, on gagne. Sinon, c'est coup de boule', '14', '1'),
+                ('Zizou', 'Troll', 'du lundi au dimanche', 'Avec moi, on gagne. Sinon, c'est coup de boule', '14', '3'),
+                ('Maitre-zen', 'Try-hard', 'aujourd\'hui', 'Je décompresse online. Beaucoup de temps dispo', '6', '1'),
+                ('Schumi', 'Chill', 'le soir', 'Pas de stress, on prend le temps, on décompresse.', '13', '1'),
+                ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '1'),
+                ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '2'),
+                ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '3'),
+                ('Elfe', 'Chill', 'tout le temps', 'Cherche mate pour jouer et faire des rencontres. A l\'aventure, compagnons ! Nain non souhaité. Niveau débutant.', '7', '4'),
+                ('Twix-droit', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '10', '1'),
+                ('Twix-droit', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '10', '2'),
+                ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '1'),
+                ('Twix-gauche', 'Troll', 'lundi, mercredi', 'Cherche mate pour m\'amuser, troller et me payer une bonne tranche de rire. Humour obligatoire.', '11', '2'),
+                ('Pan-pan', 'Chill', 'mercredi', 'Préfère taper IG plutôt qu\'IRL. Ne vous fiez pas aux apparences, je suis plus berzerk que lapinou.', '16', '4');
+
