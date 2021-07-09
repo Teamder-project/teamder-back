@@ -23,6 +23,7 @@ import com.teamder.websockets.coders.FriendChatEncoder;
 @Component
 @ServerEndpoint(value = "/chat/{id}", decoders = FriendChatDecoder.class, encoders = FriendChatEncoder.class)
 public class ChatWebsocket {
+	//Rajouter le service FrienChat
 	private Session session;
 	private Long id;
 	private static final Set<ChatWebsocket> chatEndpoints = new CopyOnWriteArraySet<>();
@@ -38,6 +39,10 @@ public class ChatWebsocket {
 
 	@OnMessage
 	public void onMessage(Session session, FriendChat message) throws IOException, EncodeException {
+		//Rajouter la date dans message
+		//Enregistrer en BDD et récupérer dans messageDB
+		
+		//remplacer message par messageDB
 		session.getBasicRemote().sendObject(message);
 		if(ChatWebsocket.sessions.get(message.getReceiver().getId()) != null) {
 			ChatWebsocket.sessions.get(message.getReceiver().getId()).getBasicRemote().sendObject(message);
