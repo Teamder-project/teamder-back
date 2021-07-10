@@ -1,7 +1,10 @@
 package com.teamder.websockets;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -14,16 +17,22 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.FriendChat;
+import com.teamder.services.FriendChatService;
 import com.teamder.websockets.coders.FriendChatDecoder;
 import com.teamder.websockets.coders.FriendChatEncoder;
 
 @Component
 @ServerEndpoint(value = "/chat/{id}", decoders = FriendChatDecoder.class, encoders = FriendChatEncoder.class)
+@RestController
 public class ChatWebsocket {
-	//Rajouter le service FrienChat
+	//Rajouter le service FriendChat
+	@Autowired
+	private FriendChatService friendChat;
 	private Session session;
 	private Long id;
 	private static final Set<ChatWebsocket> chatEndpoints = new CopyOnWriteArraySet<>();
@@ -36,12 +45,17 @@ public class ChatWebsocket {
 		chatEndpoints.add(this);
 		sessions.put(id, session);
 	}
-
+	
 	@OnMessage
 	public void onMessage(Session session, FriendChat message) throws IOException, EncodeException {
+
 		//Rajouter la date dans message
+	
 		//Enregistrer en BDD et récupérer dans messageDB
-		
+
+		this.friendChat.save(message);
+
+		//System.out.println(message);
 		//remplacer message par messageDB
 		session.getBasicRemote().sendObject(message);
 		if(ChatWebsocket.sessions.get(message.getReceiver().getId()) != null) {
@@ -55,8 +69,8 @@ public class ChatWebsocket {
 		sessions.remove(id);
 	}
 
-	@OnError
-	public void onError(Session session, Throwable throwable) {
-		System.out.println("Erreur");
-	}
+	//@OnError
+	//public void onError(Session session, Throwable throwable) {
+		//System.out.println("Erreur");
+	//}
 }
