@@ -34,9 +34,8 @@ public class FriendChatService implements GenericService<FriendChat> {
 
 	@Override
 	public FriendChat save(FriendChat friendChat) {
-		String InstantDateTimeMessage = LocalDateTime.now().toString() + "bisous";
+		String InstantDateTimeMessage = LocalDateTime.now().toString();
 		friendChat.setTime(InstantDateTimeMessage);
-		System.out.println(InstantDateTimeMessage);
 		return this.friendChat.save(friendChat);
 	}
 

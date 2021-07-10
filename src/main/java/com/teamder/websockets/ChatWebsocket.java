@@ -48,15 +48,6 @@ public class ChatWebsocket {
 	
 	@OnMessage
 	public void onMessage(Session session, FriendChat message) throws IOException, EncodeException {
-
-		//Rajouter la date dans message
-	
-		//Enregistrer en BDD et récupérer dans messageDB
-
-		this.friendChat.save(message);
-
-		//System.out.println(message);
-		//remplacer message par messageDB
 		session.getBasicRemote().sendObject(message);
 		if(ChatWebsocket.sessions.get(message.getReceiver().getId()) != null) {
 			ChatWebsocket.sessions.get(message.getReceiver().getId()).getBasicRemote().sendObject(message);

@@ -56,4 +56,6 @@ public class FriendChatController {
 	/**
 	 * Fin du CRUD pour FriendChat
 	 */
+	
+	
 }
