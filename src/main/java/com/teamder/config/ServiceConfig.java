@@ -3,7 +3,6 @@ package com.teamder.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.teamder.models.Friend;
 import com.teamder.models.FriendChat;
 import com.teamder.models.FriendGame;
 import com.teamder.models.FriendRequest;
@@ -19,6 +18,7 @@ import com.teamder.services.GameProfileEditService;
 import com.teamder.services.GameProfileService;
 import com.teamder.services.GameService;
 import com.teamder.services.SwipeService;
+import com.teamder.services.interfaces.FriendInterface;
 import com.teamder.services.interfaces.GameProfileInterface;
 import com.teamder.services.interfaces.GamerInterface;
 import com.teamder.services.interfaces.GenericService;
@@ -37,7 +37,7 @@ public class ServiceConfig {
 	}
 	
 	@Bean
-	public GenericService<Friend> FriendServiceFactory() {
+	public FriendInterface FriendServiceFactory() {
 		return new FriendService();
 	}
 	

@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.Friend;
-import com.teamder.services.interfaces.GenericService;
+import com.teamder.models.Gamer;
+import com.teamder.services.interfaces.FriendInterface;
 
 @RestController
 @RequestMapping("friends")
 public class FriendController {
 
 	@Autowired
-	private GenericService<Friend> service;
+	private FriendInterface service;
 	
 	/**
 	 * CRUD pour Friend
@@ -34,6 +35,11 @@ public class FriendController {
 	@GetMapping("{id}")
 	public Friend getFriendById(@PathVariable Long id) {
 		return this.service.getById(id);
+	}
+	
+	@GetMapping("gamer/{id}")
+	public List<Gamer> getGamersByGamerId(@PathVariable Long id) {
+		return this.service.getGamersByGamerId(id);
 	}
 	
 	@PostMapping()
