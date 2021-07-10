@@ -1,7 +1,10 @@
 package com.teamder.services;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import javax.websocket.EncodeException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,6 +13,7 @@ import com.teamder.models.FriendGame;
 import com.teamder.models.Swipe;
 import com.teamder.repositories.SwipeRepository;
 import com.teamder.services.interfaces.GenericService;
+import com.teamder.websockets.NotifsSwipeWebsocket;
 
 public class SwipeService implements GenericService<Swipe> {
 
@@ -51,6 +55,20 @@ public class SwipeService implements GenericService<Swipe> {
 				friend = this.friendService.save(friend);
 				FriendGame friendGame = new FriendGame(friend, swipe.getSwiped().getGame());
 				this.friendGameService.save(friendGame);
+				try {
+					if(NotifsSwipeWebsocket.sessions.get(swipeDB.getSwiped().getGamer().getId()) != null) {
+						NotifsSwipeWebsocket.sessions.get(swipeDB.getSwiped().getGamer().getId()).getBasicRemote().sendObject(swipeDB.getSwiper().getGamer());
+					}
+					if(NotifsSwipeWebsocket.sessions.get(swipeDB.getSwiper().getGamer().getId()) != null) {
+						NotifsSwipeWebsocket.sessions.get(swipeDB.getSwiper().getGamer().getId()).getBasicRemote().sendObject(swipeDB.getSwiped().getGamer());
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (EncodeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		return swipeDB;

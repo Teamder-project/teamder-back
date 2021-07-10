@@ -1,4 +1,4 @@
-package com.teamder.controllers;
+package com.teamder.websockets;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,16 +16,17 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Component;
 
-import com.teamder.config.MessageDecoder;
-import com.teamder.config.MessageEncoder;
 import com.teamder.models.FriendChat;
+import com.teamder.websockets.coders.FriendChatDecoder;
+import com.teamder.websockets.coders.FriendChatEncoder;
 
 @Component
-@ServerEndpoint(value = "/chat/{id}", decoders = MessageDecoder.class, encoders = MessageEncoder.class)
-public class ChatController {
+@ServerEndpoint(value = "/chat/{id}", decoders = FriendChatDecoder.class, encoders = FriendChatEncoder.class)
+public class ChatWebsocket {
+	//Rajouter le service FrienChat
 	private Session session;
 	private Long id;
-	private static final Set<ChatController> chatEndpoints = new CopyOnWriteArraySet<>();
+	private static final Set<ChatWebsocket> chatEndpoints = new CopyOnWriteArraySet<>();
 	private static HashMap<Long, Session> sessions = new HashMap<>();
 
 	@OnOpen
@@ -38,9 +39,13 @@ public class ChatController {
 
 	@OnMessage
 	public void onMessage(Session session, FriendChat message) throws IOException, EncodeException {
+		//Rajouter la date dans message
+		//Enregistrer en BDD et récupérer dans messageDB
+		
+		//remplacer message par messageDB
 		session.getBasicRemote().sendObject(message);
-		if(ChatController.sessions.get(message.getReceiver().getId()) != null) {
-			ChatController.sessions.get(message.getReceiver().getId()).getBasicRemote().sendObject(message);
+		if(ChatWebsocket.sessions.get(message.getReceiver().getId()) != null) {
+			ChatWebsocket.sessions.get(message.getReceiver().getId()).getBasicRemote().sendObject(message);
 		}
 	}
 

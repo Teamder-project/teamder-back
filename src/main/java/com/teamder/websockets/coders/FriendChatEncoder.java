@@ -1,4 +1,4 @@
-package com.teamder.config;
+package com.teamder.websockets.coders;
 
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
@@ -7,7 +7,7 @@ import javax.websocket.EndpointConfig;
 import com.teamder.models.FriendChat;
 import com.google.gson.Gson;
 
-public class MessageEncoder implements Encoder.Text<FriendChat> {
+public class FriendChatEncoder implements Encoder.Text<FriendChat> {
 
     private static Gson gson = new Gson();
 

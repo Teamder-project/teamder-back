@@ -2,7 +2,7 @@
 #        Script MySQL.
 #------------------------------------------------------------
 DROP SCHEMA IF EXISTS `teamder`;
-CREATE SCHEMA `teamder` DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA `teamder` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `teamder`;
 #------------------------------------------------------------
 # Table: gamer
