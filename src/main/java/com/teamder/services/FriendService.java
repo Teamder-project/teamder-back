@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.Friend;
 import com.teamder.repositories.FriendRepository;
+import com.teamder.services.interfaces.FriendInterface;
 import com.teamder.services.interfaces.GenericService;
 
-public class FriendService implements GenericService<Friend> {
+public class FriendService implements FriendInterface {
 
 	@Autowired
 	private FriendRepository friend;
@@ -47,8 +48,17 @@ public class FriendService implements GenericService<Friend> {
 		this.friend.deleteById(id);
 		
 	}
+
+
 	
 	/**
 	 * Fin CRUD pour Friend
 	 */
+	
+	@Override
+	public List<Friend> getByGamerId(Long id) { 
+		return this.friend.findByGamer1Id(id);
+	}
+	
+	
 }

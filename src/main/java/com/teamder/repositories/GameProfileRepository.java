@@ -27,10 +27,6 @@ public interface GameProfileRepository extends JpaRepository<GameProfile, Long> 
 	List<GameProfile> getProfilesSwipe(Long id, Long idGamer, Long idGame, Long id1, Long id2);
 	
 	
-	
-	
-	
-	
-	
+
 	public List<GameProfile> findByGamerId(Long id);
 }
