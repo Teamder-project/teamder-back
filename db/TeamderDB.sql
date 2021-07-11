@@ -456,3 +456,11 @@ INSERT INTO `teamder`.`game_profile` (`nickname_game`, `goals`, `schedule`, `des
                 ('Drago', 'Try-hard', 'Hors temps scolaire', 'Vive serpentard, moldu non autorise', '78', '1'),
                 ('Dumbledore', 'Chill', 'Hors temps scolaire', 'Il faut beaucoup de bravoure pour faire face à ses ennemis mais il n\’en faut pas moins pour affronter ses amis. ', '79', '1'),
 		('McGonagall', 'Try-hard', 'Hors temps scolaire', 'Rejoins-moi dans la noble maison Gryffondor', '80', '1');
+
+#swipe accepté entre le profil 1 et 2 : permet de creer un lien "ami"
+INSERT INTO `teamder`.`swipe` (`id`, `state`, `id_GAME_PROFILE`, `id_2_GAME_PROFILE`) VALUES ('1000', '1', '1', '2');
+INSERT INTO `teamder`.`swipe` (`id`, `state`, `id_GAME_PROFILE`, `id_2_GAME_PROFILE`) VALUES ('1001', '1', '2', '1');
+
+#enregistre le match entre profil 1 et profil : permet de tester le chat
+INSERT INTO `teamder`.`friend` (`id`, `id_GAMER`, `id_2_GAMER`) VALUES ('1000', '1', '2');
+INSERT INTO `teamder`.`friend` (`id`, `id_GAMER`, `id_2_GAMER`) VALUES ('1001', '2', '1');
