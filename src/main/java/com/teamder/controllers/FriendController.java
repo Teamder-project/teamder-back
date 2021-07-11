@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.Friend;
+import com.teamder.models.Gamer;
 import com.teamder.services.interfaces.FriendInterface;
 
 @CrossOrigin
@@ -56,9 +57,9 @@ public class FriendController {
 	/**
 	 * Fin du CRUD pour Friend
 	 */
-	@GetMapping("friend/{id}")
-	public List<Friend> getAllFriendsById(@PathVariable Long id){
-		return this.service.getByGamerId(id);
+	@GetMapping("gamer/{id}")
+	public List<Gamer> getAllFriendsById(@PathVariable Long idGamer){
+		return this.service.getGamersByGamerId(idGamer);
 	}
 	
 }

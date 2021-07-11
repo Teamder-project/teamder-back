@@ -1,10 +1,12 @@
 package com.teamder.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.Friend;
+import com.teamder.models.Gamer;
 import com.teamder.repositories.FriendRepository;
 import com.teamder.services.interfaces.FriendInterface;
 import com.teamder.services.interfaces.GenericService;
@@ -49,16 +51,22 @@ public class FriendService implements FriendInterface {
 		
 	}
 
-
+	@Override
+	public List<Gamer> getGamersByGamerId(Long idGamer) {
+		List<Gamer> liste = new ArrayList<Gamer>();
+		for(Friend friend : this.friend.getGamersByGamer(idGamer)) {
+			liste.add(friend.getGamer2());
+		};
+		for(Friend friend : this.friend.getGamersByGamerBis(idGamer)) {
+			liste.add(friend.getGamer1());
+		};
+		return liste;
+	}
 	
 	/**
 	 * Fin CRUD pour Friend
 	 */
-	
-	@Override
-	public List<Friend> getByGamerId(Long id) { 
-		return this.friend.findByGamer1Id(id);
-	}
+
 	
 	
 }
