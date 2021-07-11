@@ -297,7 +297,7 @@ INSERT INTO `teamder`.`gamer` (`id`, `username`, `password`, `email`, `birthday`
 	('14', 'Zizou', 'zizou', 'zizou@zizou.com', '1972-06-23', 'M', 'France','masamune'),
 	('15', 'Hitman', 'hit', 'hit@hit.com', '2000-01-01', 'M', 'Danemark','ak47-cs'),
 	('16', 'Lapin', 'lapin', 'lapin@lapin.com', '1900-01-01', 'NR', 'France','katarina'),
-        ('17', 'LaMadre', 'madre', 'madre@madre.com', '1994-09-11','F', 'France' 'teemo'),
+        ('17', 'LaMadre', 'madre', 'madre@madre.com', '1994-09-11','F', 'France', 'teemo'),
         ('18', 'LePadre', 'padre', 'padre@padre.com', '1998-01-01', 'M', 'France', 'teemo'),
 	('19', 'Revy', 'revy', 'revy@revy.com', '2003-01-01', 'M', 'France', 'ak47-cs'),
         ('20', 'Ashitaka', 'ashi', 'ashi@ashi.com', '1980-01-01', 'M', 'Jap', 'trainee-rl'),
