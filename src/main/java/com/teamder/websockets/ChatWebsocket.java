@@ -1,28 +1,22 @@
 package com.teamder.websockets;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.websocket.EncodeException;
 import javax.websocket.OnClose;
-import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.FriendChat;
-import com.teamder.services.FriendChatService;
 import com.teamder.websockets.coders.FriendChatDecoder;
 import com.teamder.websockets.coders.FriendChatEncoder;
 
@@ -30,9 +24,6 @@ import com.teamder.websockets.coders.FriendChatEncoder;
 @ServerEndpoint(value = "/chat/{id}", decoders = FriendChatDecoder.class, encoders = FriendChatEncoder.class)
 @RestController
 public class ChatWebsocket {
-	//Rajouter le service FriendChat
-	@Autowired
-	private FriendChatService friendChat;
 	private Session session;
 	private Long id;
 	private static final Set<ChatWebsocket> chatEndpoints = new CopyOnWriteArraySet<>();

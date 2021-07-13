@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.FriendChat;
-import com.teamder.services.interfaces.GenericService;
+import com.teamder.services.interfaces.FriendChatInterface;
 
 @CrossOrigin
 @RestController
@@ -22,7 +22,7 @@ import com.teamder.services.interfaces.GenericService;
 public class FriendChatController {
 
 	@Autowired
-	private GenericService<FriendChat> service;
+	private FriendChatInterface service;
 	
 	/**
 	 * CRUD pour FriendChat
@@ -31,6 +31,11 @@ public class FriendChatController {
 	@GetMapping()
 	public List<FriendChat> getFriendChats() {
 		return this.service.getAll();
+	}
+	
+	@GetMapping("{idSender}/{idReceiver}")
+	public List<FriendChat> getFriendChatsBySenderAndReceiver(@PathVariable Long idSender, @PathVariable Long idReceiver) {
+		return this.service.getMessagesBySenderAndReceiver(idSender, idReceiver);
 	}
 	
 	@GetMapping("{id}")

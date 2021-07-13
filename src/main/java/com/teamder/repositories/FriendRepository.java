@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.teamder.models.Friend;
-import com.teamder.models.GameProfile;
 
 
 public interface FriendRepository extends JpaRepository<Friend, Long> {

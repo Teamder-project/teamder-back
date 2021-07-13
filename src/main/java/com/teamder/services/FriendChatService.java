@@ -4,14 +4,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.teamder.models.FriendChat;
 import com.teamder.repositories.FriendChatRepository;
-import com.teamder.services.interfaces.GenericService;
+import com.teamder.services.interfaces.FriendChatInterface;
 
 
-public class FriendChatService implements GenericService<FriendChat> {
+public class FriendChatService implements FriendChatInterface {
 
 	@Autowired
 	private FriendChatRepository friendChat;
@@ -50,6 +49,11 @@ public class FriendChatService implements GenericService<FriendChat> {
 		
 		this.friendChat.deleteById(id);
 		
+	}
+
+	@Override
+	public List<FriendChat> getMessagesBySenderAndReceiver(Long idSender, Long idReceiver) {
+		return friendChat.getMessagesBySenderAndReceiver(idSender, idReceiver);
 	}
 	
 	/**

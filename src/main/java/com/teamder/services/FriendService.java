@@ -9,7 +9,6 @@ import com.teamder.models.Friend;
 import com.teamder.models.Gamer;
 import com.teamder.repositories.FriendRepository;
 import com.teamder.services.interfaces.FriendInterface;
-import com.teamder.services.interfaces.GenericService;
 
 public class FriendService implements FriendInterface {
 
