@@ -50,10 +50,10 @@ public class FriendChatService implements FriendChatInterface {
 		this.friendChat.deleteById(id);
 		
 	}
-
+	
 	@Override
-	public List<FriendChat> getMessagesBySenderAndReceiver(Long idSender, Long idReceiver) {
-		return friendChat.getMessagesBySenderAndReceiver(idSender, idReceiver);
+	public List<FriendChat> getMessagesByGamer(Long idGamer) {
+		return friendChat.getMessagesByGamer(idGamer);
 	}
 	
 	/**

@@ -33,9 +33,9 @@ public class FriendChatController {
 		return this.service.getAll();
 	}
 	
-	@GetMapping("{idSender}/{idReceiver}")
-	public List<FriendChat> getFriendChatsBySenderAndReceiver(@PathVariable Long idSender, @PathVariable Long idReceiver) {
-		return this.service.getMessagesBySenderAndReceiver(idSender, idReceiver);
+	@GetMapping("gamer/{idGamer}")
+	public List<FriendChat> getFriendChatsByGamer(@PathVariable Long idGamer) {
+		return this.service.getMessagesByGamer(idGamer);
 	}
 	
 	@GetMapping("{id}")

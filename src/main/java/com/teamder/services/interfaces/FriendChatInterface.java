@@ -5,6 +5,6 @@ import java.util.List;
 import com.teamder.models.FriendChat;
 
 public interface FriendChatInterface extends GenericService<FriendChat>{
-
-	public List<FriendChat> getMessagesBySenderAndReceiver(Long idSender, Long idReceiver);
+	
+	public List<FriendChat> getMessagesByGamer(Long idGamer);
 }
