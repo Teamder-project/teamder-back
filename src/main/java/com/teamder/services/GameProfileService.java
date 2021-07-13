@@ -55,7 +55,9 @@ public class GameProfileService implements GameProfileInterface {
 		this.gameProfile.deleteById(id);
 		
 	}
-
+	/**
+	 * Fin du CRUD pour GameProfile
+	 */
 	@Override
 	public List<GameProfile> getProfilesForSwipe(Long id) {
 		GameProfile gameProfileDb = this.gameProfile.getById(id);
@@ -72,7 +74,5 @@ public class GameProfileService implements GameProfileInterface {
 		return result;
 	}
 	
-	/**
-	 * Fin du CRUD pour GameProfile
-	 */
+	
 }

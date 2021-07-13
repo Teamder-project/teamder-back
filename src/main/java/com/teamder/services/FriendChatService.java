@@ -1,14 +1,16 @@
 package com.teamder.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teamder.models.FriendChat;
 import com.teamder.repositories.FriendChatRepository;
-import com.teamder.services.interfaces.GenericService;
+import com.teamder.services.interfaces.FriendChatInterface;
 
-public class FriendChatService implements GenericService<FriendChat> {
+
+public class FriendChatService implements FriendChatInterface {
 
 	@Autowired
 	private FriendChatRepository friendChat;
@@ -31,7 +33,8 @@ public class FriendChatService implements GenericService<FriendChat> {
 
 	@Override
 	public FriendChat save(FriendChat friendChat) {
-		
+		String InstantDateTimeMessage = LocalDateTime.now().toString();
+		friendChat.setTime(InstantDateTimeMessage);
 		return this.friendChat.save(friendChat);
 	}
 
@@ -48,8 +51,14 @@ public class FriendChatService implements GenericService<FriendChat> {
 		
 	}
 	
+	@Override
+	public List<FriendChat> getMessagesByGamer(Long idGamer) {
+		return friendChat.getMessagesByGamer(idGamer);
+	}
+	
 	/**
 	 * Fin du CRUD pour FriendChat
 	 */
+
 	
 }

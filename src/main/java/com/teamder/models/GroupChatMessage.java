@@ -1,7 +1,5 @@
 package com.teamder.models;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +19,7 @@ public class GroupChatMessage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String message;
-	private LocalDateTime time;
+	private String time;
 	@ManyToOne
 	@JoinColumn(name = "id_GAMER", referencedColumnName = "id")
 	private Gamer sender;

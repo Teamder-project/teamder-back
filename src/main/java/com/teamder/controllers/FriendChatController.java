@@ -3,6 +3,7 @@ package com.teamder.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -13,14 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.FriendChat;
-import com.teamder.services.interfaces.GenericService;
+import com.teamder.services.interfaces.FriendChatInterface;
 
+@CrossOrigin
 @RestController
 @RequestMapping("friend-chats")
 public class FriendChatController {
 
 	@Autowired
-	private GenericService<FriendChat> service;
+	private FriendChatInterface service;
 	
 	/**
 	 * CRUD pour FriendChat
@@ -29,6 +31,11 @@ public class FriendChatController {
 	@GetMapping()
 	public List<FriendChat> getFriendChats() {
 		return this.service.getAll();
+	}
+	
+	@GetMapping("gamer/{idGamer}")
+	public List<FriendChat> getFriendChatsByGamer(@PathVariable Long idGamer) {
+		return this.service.getMessagesByGamer(idGamer);
 	}
 	
 	@GetMapping("{id}")
@@ -54,4 +61,6 @@ public class FriendChatController {
 	/**
 	 * Fin du CRUD pour FriendChat
 	 */
+	
+	
 }
