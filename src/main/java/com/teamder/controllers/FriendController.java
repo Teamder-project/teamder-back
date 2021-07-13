@@ -57,7 +57,7 @@ public class FriendController {
 	/**
 	 * Fin du CRUD pour Friend
 	 */
-	@GetMapping("gamer/{id}")
+	@GetMapping("gamer/{idGamer}")
 	public List<Gamer> getAllFriendsById(@PathVariable Long idGamer){
 		return this.service.getGamersByGamerId(idGamer);
 	}
