@@ -463,4 +463,3 @@ INSERT INTO `teamder`.`swipe` (`id`, `state`, `id_GAME_PROFILE`, `id_2_GAME_PROF
 
 #enregistre le match entre profil 1 et profil : permet de tester le chat
 INSERT INTO `teamder`.`friend` (`id`, `id_GAMER`, `id_2_GAMER`) VALUES ('1', '1', '2');
-I
