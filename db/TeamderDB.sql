@@ -458,8 +458,8 @@ INSERT INTO `teamder`.`game_profile` (`nickname_game`, `goals`, `schedule`, `des
 		('McGonagall', 'Try-hard', 'Hors temps scolaire', 'Rejoins-moi dans la noble maison Gryffondor', '80', '1');
 
 #swipe accepté entre le profil 1 et 2 : permet de creer un lien "ami"
-INSERT INTO `teamder`.`swipe` (`id`, `state`, `id_GAME_PROFILE`, `id_2_GAME_PROFILE`) VALUES ('1', '1', '1', '2');
-INSERT INTO `teamder`.`swipe` (`id`, `state`, `id_GAME_PROFILE`, `id_2_GAME_PROFILE`) VALUES ('2', '1', '2', '1');
+INSERT INTO `teamder`.`swipe` (`state`, `id_GAME_PROFILE`, `id_2_GAME_PROFILE`) VALUES ('1', '1', '3');
+INSERT INTO `teamder`.`swipe` (`state`, `id_GAME_PROFILE`, `id_2_GAME_PROFILE`) VALUES ('1', '3', '1');
 
 #enregistre le match entre profil 1 et profil : permet de tester le chat
-INSERT INTO `teamder`.`friend` (`id`, `id_GAMER`, `id_2_GAMER`) VALUES ('1', '1', '2');
+INSERT INTO `teamder`.`friend` (`id_GAMER`, `id_2_GAMER`) VALUES ('1', '2');
