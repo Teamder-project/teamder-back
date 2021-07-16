@@ -1,7 +1,11 @@
-FROM maven:3-openjdk-11
-
+FROM maven:3-openjdk-11 as builder
+WORKDIR /app
 COPY . .
-
 RUN mvn install -DskipTests
 
-CMD ["java", "-jar", "./target/teamder-back-0.0.1-SNAPSHOT.jar"]
+#permet de prendre une image moins lourde à build
+FROM openjdk:11-slim
+WORKDIR /app
+COPY --from=builder /app/target/teamder-back-0.0.1-SNAPSHOT.jar . 
+
+CMD ["java", "-jar", "teamder-back-0.0.1-SNAPSHOT.jar"]

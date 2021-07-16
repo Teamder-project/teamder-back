@@ -3,6 +3,7 @@ package com.teamder.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -13,14 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamder.models.Friend;
-import com.teamder.services.interfaces.GenericService;
+import com.teamder.models.Gamer;
+import com.teamder.services.interfaces.FriendInterface;
 
+@CrossOrigin
 @RestController
 @RequestMapping("friends")
 public class FriendController {
 
 	@Autowired
-	private GenericService<Friend> service;
+	private FriendInterface service;
 	
 	/**
 	 * CRUD pour Friend
@@ -54,4 +57,9 @@ public class FriendController {
 	/**
 	 * Fin du CRUD pour Friend
 	 */
+	@GetMapping("gamer/{idGamer}")
+	public List<Gamer> getAllFriendsById(@PathVariable Long idGamer){
+		return this.service.getGamersByGamerId(idGamer);
+	}
+	
 }

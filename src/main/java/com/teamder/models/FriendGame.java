@@ -24,4 +24,12 @@ public class FriendGame {
 	@ManyToOne
 	@JoinColumn(name = "id_GAME", referencedColumnName = "id")
 	private Game game;
+	
+	public FriendGame(Friend friend, Game game) {
+		super();
+		this.friend = friend;
+		this.game = game;
+	}
+	
+	
 }

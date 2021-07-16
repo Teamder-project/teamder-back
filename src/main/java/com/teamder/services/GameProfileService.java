@@ -55,16 +55,24 @@ public class GameProfileService implements GameProfileInterface {
 		this.gameProfile.deleteById(id);
 		
 	}
-
+	/**
+	 * Fin du CRUD pour GameProfile
+	 */
 	@Override
-	public List<GameProfile> getProfilesForSwipe(GameProfile gameProfile) {
-		GameProfile gameProfileDb = this.gameProfile.getById(gameProfile.getId());
+	public List<GameProfile> getProfilesForSwipe(Long id) {
+		GameProfile gameProfileDb = this.gameProfile.getById(id);
 		List<GameProfile> result = this.gameProfile.getProfilesSwipe(gameProfileDb.getId(), gameProfileDb.getGamer().getId(), gameProfileDb.getGame().getId());
 		Collections.shuffle(result);
 		return result;
 	}
 	
-	/**
-	 * Fin du CRUD pour GameProfile
-	 */
+	@Override
+	public List<GameProfile> getProfilesForSwipe(Long id, Long id1, Long id2) {
+		GameProfile gameProfileDb = this.gameProfile.getById(id);
+		List<GameProfile> result = this.gameProfile.getProfilesSwipe(gameProfileDb.getId(), gameProfileDb.getGamer().getId(), gameProfileDb.getGame().getId(), id1, id2);
+		Collections.shuffle(result);
+		return result;
+	}
+	
+	
 }

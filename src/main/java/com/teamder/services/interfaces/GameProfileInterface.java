@@ -8,5 +8,9 @@ public interface GameProfileInterface extends GenericService<GameProfile> {
 
 	public List<GameProfile> getByGamerId(Long id);
 	
-	public List<GameProfile> getProfilesForSwipe(GameProfile gameprofile);
+	public List<GameProfile> getProfilesForSwipe(Long id);
+	
+	public List<GameProfile> getProfilesForSwipe(Long id, Long id1, Long id2);
+	
+	
 }

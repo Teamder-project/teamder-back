@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Friend {
 
@@ -27,4 +29,13 @@ public class Friend {
 	@ManyToOne
 	@JoinColumn(name = "id_2_GAMER", referencedColumnName = "id")
 	private Gamer gamer2;
+	
+	public Friend(LocalDateTime date_match, Gamer gamer1, Gamer gamer2) {
+		super();
+		this.date_match = date_match;
+		this.gamer1 = gamer1;
+		this.gamer2 = gamer2;
+	}
+	
+	
 }

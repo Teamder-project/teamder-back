@@ -33,9 +33,14 @@ public class GameProfileController {
 		return this.service.getAll();
 	}
 	
-	@PostMapping("swipe")
-	public List<GameProfile> getGameProfilesForSwipe(@RequestBody GameProfile gameprofile) {	
-		return this.service.getProfilesForSwipe(gameprofile);
+	@GetMapping("swipe/{id}")
+	public List<GameProfile> getGameProfilesForSwipe(@PathVariable Long id) {	
+		return this.service.getProfilesForSwipe(id);
+	}
+	
+	@GetMapping("swipe/{id}/{id1}/{id2}")
+	public List<GameProfile> getGameProfilesForSwipe(@PathVariable Long id, @PathVariable Long id1, @PathVariable Long id2) {	
+		return this.service.getProfilesForSwipe(id, id1, id2);
 	}
 	
 	@GetMapping("{id}")
